@@ -35,9 +35,10 @@
 </template>
 
 <script setup>
-import { useGameState, CHIPS } from '../stores/gameStore.js'
+import { useGameStore } from '../stores/gameStore.js'
+import { CHIPS } from '../constants.js'
 
-const { state, clearBets, totalBets } = useGameState()
+const { state, clearBets, totalBets } = useGameStore()
 </script>
 
 <style scoped>
@@ -84,12 +85,10 @@ const { state, clearBets, totalBets } = useGameState()
   border: 2px dashed rgba(255,255,255,0.25);
 }
 
-.chip:hover {
-  transform: scale(1.08);
-}
+.chip:hover  { transform: scale(1.08); }
 
 .chip.selected {
-  border-color: #FFD700 !important;
+  border-color: var(--gold-light);
   box-shadow: 0 0 16px rgba(255, 215, 0, 0.8);
   transform: scale(1.15);
 }
@@ -150,10 +149,7 @@ const { state, clearBets, totalBets } = useGameState()
   gap: 6px;
 }
 
-.info-label {
-  color: #888;
-  font-size: 13px;
-}
+.info-label { color: #888; font-size: 13px; }
 
 .info-value {
   color: var(--gold);
@@ -161,7 +157,5 @@ const { state, clearBets, totalBets } = useGameState()
   font-weight: bold;
 }
 
-.balance-value {
-  color: #4caf50;
-}
+.balance-value { color: #4caf50; }
 </style>

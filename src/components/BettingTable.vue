@@ -158,19 +158,13 @@
 </template>
 
 <script setup>
-import { useGameState, RED_NUMBERS } from '../stores/gameStore.js'
+import { useGameStore, getNumberColor } from '../stores/gameStore.js'
 import ChipIndicator from './ChipIndicator.vue'
 
-const { state, placeBet } = useGameState()
+const { state, placeBet } = useGameStore()
 
-function getNumClass(n) {
-  if (RED_NUMBERS.includes(n)) return 'red-num-cell'
-  return 'black-num-cell'
-}
-
-function isWinning(betKey) {
-  return state.showResult && state.winningBets.includes(betKey)
-}
+const getNumClass  = (n) => `${getNumberColor(n)}-num-cell`
+const isWinning    = (betKey) => state.showResult && state.winningBets.includes(betKey)
 </script>
 
 <style scoped>
@@ -272,13 +266,8 @@ function isWinning(betKey) {
   min-height: 44px;
 }
 
-.red-num-cell {
-  background: #7a1a10 !important;
-}
-
-.black-num-cell {
-  background: #111 !important;
-}
+.number-cell.red-num-cell   { background: #7a1a10; }
+.number-cell.black-num-cell { background: #111; }
 
 .outside-cell {
   background: var(--felt-border);
@@ -294,15 +283,8 @@ function isWinning(betKey) {
   min-height: 40px;
 }
 
-.red-cell {
-  background: #7a1a10 !important;
-  color: #fff !important;
-}
-
-.black-cell {
-  background: #111 !important;
-  color: #fff !important;
-}
+.outside-cell.red-cell   { background: #7a1a10; color: #fff; }
+.outside-cell.black-cell { background: #111;    color: #fff; }
 
 .cell-number {
   font-size: 12px;

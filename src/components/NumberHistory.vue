@@ -20,9 +20,9 @@
 </template>
 
 <script setup>
-import { useGameState } from '../stores/gameStore.js'
+import { useGameStore } from '../stores/gameStore.js'
 
-const { state } = useGameState()
+const { state } = useGameStore()
 </script>
 
 <style scoped>

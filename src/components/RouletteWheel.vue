@@ -46,7 +46,8 @@
 <script setup>
 import { ref } from 'vue'
 import { gsap } from 'gsap'
-import { useGameStore, WHEEL_NUMBERS, getNumberColor } from '../stores/gameStore.js'
+import { useGameStore, getNumberColor } from '../stores/gameStore.js'
+import { WHEEL_NUMBERS } from '../constants.js'
 import { WHEEL, SPIN } from '../constants.js'
 
 const { state, processResult } = useGameStore()

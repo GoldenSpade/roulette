@@ -9,8 +9,6 @@ import {
   RESULT_TOAST_MS,
 } from '../constants.js'
 
-export { WHEEL_NUMBERS, RED_NUMBERS, BLACK_NUMBERS, CHIPS }
-
 // ─── State (singleton — shared across all components) ────────────────────────
 
 const state = reactive({
@@ -52,8 +50,9 @@ function checkBetWin(betKey, n) {
 }
 
 function getPayoutMultiplier(betKey) {
-  if (betKey.startsWith('n_'))                                   return PAYOUT.STRAIGHT
-  if (betKey.startsWith('col_') || betKey.startsWith('dozen_')) return PAYOUT.COLUMN
+  if (betKey.startsWith('n_'))      return PAYOUT.STRAIGHT
+  if (betKey.startsWith('col_'))    return PAYOUT.COLUMN
+  if (betKey.startsWith('dozen_')) return PAYOUT.DOZEN
   return PAYOUT.OUTSIDE
 }
 
